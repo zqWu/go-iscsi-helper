@@ -27,8 +27,10 @@ RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 # Install Go & tools
 ENV GOLANG_ARCH_amd64=amd64 GOLANG_ARCH_arm=armv6l GOLANG_ARCH=GOLANG_ARCH_${ARCH} \
     GOPATH=/go PATH=/go/bin:/usr/local/go/bin:${PATH} SHELL=/bin/bash
-RUN wget -O - https://storage.googleapis.com/golang/go1.14.1.linux-${!GOLANG_ARCH}.tar.gz | tar -xzf - -C /usr/local && \
-    go get github.com/rancher/trash && go get -u golang.org/x/lint/golint
+RUN wget -O - https://storage.googleapis.com/golang/go1.14.4.linux-${!GOLANG_ARCH}.tar.gz | tar -xzf - -C /usr/local
+ENV GOPROXY=https://goproxy.io,direct
+RUN go get github.com/rancher/trash
+#go get -u golang.org/x/lint/golint
 
 # Docker
 ENV DOCKER_URL_amd64=https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.03.3~ce-0~ubuntu-xenial_amd64.deb \
