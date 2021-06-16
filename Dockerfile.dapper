@@ -11,7 +11,8 @@ ENV DAPPER_DOCKER_SOCKET true
 ENV DAPPER_ENV TAG REPO
 ENV DAPPER_OUTPUT bin
 ENV DAPPER_RUN_ARGS --privileged -v /dev:/host/dev -v /proc:/host/proc
-ENV DAPPER_SOURCE /go/src/github.com/longhorn/go-iscsi-helper
+#ENV DAPPER_SOURCE /go/src/github.com/longhorn/go-iscsi-helper
+ENV DAPPER_SOURCE /go/src/github.com/zqWu/go-iscsi-helper
 WORKDIR ${DAPPER_SOURCE}
 
 # Install packages

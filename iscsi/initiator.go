@@ -11,7 +11,8 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	"github.com/longhorn/go-iscsi-helper/util"
+	// "github.com/longhorn/go-iscsi-helper/util"
+	"github.com/zqWu/go-iscsi-helper/util"
 )
 
 var (
