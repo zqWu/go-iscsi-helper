@@ -128,10 +128,12 @@ func (ne *NamespaceExecutor) ExecuteWithoutTimeout(name string, args []string) (
 }
 
 func Execute(binary string, args []string) (string, error) {
+	logrus.Infof("go-iscsi-helper/util/util.go, Execute binary:%v, args:%v", binary, args)
 	return ExecuteWithTimeout(cmdTimeout, binary, args)
 }
 
 func ExecuteWithTimeout(timeout time.Duration, binary string, args []string) (string, error) {
+	logrus.Infof("go-iscsi-helper/util/util.go, ExecuteWithTimeout binary:%v, args:%v, timeout:%v", binary, args, timeout)
 	var err error
 	cmd := exec.Command(binary, args...)
 	done := make(chan struct{})
@@ -168,6 +170,7 @@ func ExecuteWithTimeout(timeout time.Duration, binary string, args []string) (st
 // TODO: Merge this with ExecuteWithTimeout
 
 func ExecuteWithoutTimeout(binary string, args []string) (string, error) {
+	logrus.Infof("go-iscsi-helper/util/util.go, ExecuteWithoutTimeout binary:%v, args:%v", binary, args)
 	var err error
 	var output, stderr bytes.Buffer
 
@@ -196,6 +199,8 @@ func (ne *NamespaceExecutor) ExecuteWithStdin(name string, args []string, stdinS
 }
 
 func ExecuteWithStdin(binary string, args []string, stdinString string) (string, error) {
+	logrus.Infof("go-iscsi-helper/util/util.go, ExecuteWithStdin binary:%v, args:%v, stdinString:%v", binary, args, stdinString)
+
 	var err error
 	cmd := exec.Command(binary, args...)
 	done := make(chan struct{})
@@ -240,6 +245,8 @@ func ExecuteWithStdin(binary string, args []string, stdinString string) (string,
 }
 
 func RemoveFile(file string) error {
+	logrus.Infof("go-iscsi-helper/util/util.go, RemoveFile file:%v", file)
+
 	if _, err := os.Stat(file); os.IsNotExist(err) {
 		// file doesn't exist
 		return nil
@@ -253,6 +260,7 @@ func RemoveFile(file string) error {
 }
 
 func RemoveDevice(dev string) error {
+	logrus.Infof("go-iscsi-helper/util/util.go, RemoveDevice dev:%v", dev)
 	if _, err := os.Stat(dev); err == nil {
 		if err := remove(dev); err != nil {
 			return fmt.Errorf("Failed to removing device %s, %w", dev, err)
@@ -278,6 +286,7 @@ func GetKnownDevices(ne *NamespaceExecutor) (map[string]*KernelDevice, error) {
 	opts := []string{
 		"-l", "-n", "-o", "NAME,MAJ:MIN",
 	}
+	logrus.Infof("go-iscsi-helper/util/util.go, GetKnownDevices, ne.ns:%v, opts:%v", ne.ns, opts)
 
 	output, err := ne.Execute(LSBLKBinary, opts)
 	if err != nil {
