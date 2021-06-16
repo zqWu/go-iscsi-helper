@@ -1,4 +1,4 @@
-module github.com/longhorn/go-iscsi-helper
+module github.com/zqWu/go-iscsi-helper
 
 go 1.13
 
