@@ -11,9 +11,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	//"github.com/longhorn/go-iscsi-helper/iscsidev"
-	//"github.com/longhorn/go-iscsi-helper/types"
-	//"github.com/longhorn/go-iscsi-helper/util"
 	"github.com/zqWu/go-iscsi-helper/iscsidev"
 	"github.com/zqWu/go-iscsi-helper/types"
 	"github.com/zqWu/go-iscsi-helper/util"

@@ -8,8 +8,6 @@ import (
 	"github.com/longhorn/nsfilelock"
 	"github.com/sirupsen/logrus"
 
-	//"github.com/longhorn/go-iscsi-helper/iscsi"
-	//"github.com/longhorn/go-iscsi-helper/util"
 	"github.com/zqWu/go-iscsi-helper/iscsi"
 	"github.com/zqWu/go-iscsi-helper/util"
 )
